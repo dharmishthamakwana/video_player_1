@@ -11,12 +11,15 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  HomeProvider? T, F;
+  HomeProvider? homeProviderTrue;
+  HomeProvider? homeProviderFalse;
+
+
 
   @override
   Widget build(BuildContext context) {
-    T = Provider.of(context, listen: true);
-    F = Provider.of(context, listen: false);
+    homeProviderTrue = Provider.of(context, listen: true);
+    homeProviderFalse = Provider.of(context, listen: false);
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.white70,
@@ -30,7 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
           itemBuilder: (context, index) {
             return InkWell(
               onTap: () {
-                var m1 = F!.videoload(index);
+                var m1 = homeProviderFalse!.videoload(index);
                 Navigator.pushNamed(context, 'playscreen');
               },
               child: Container(
@@ -47,13 +50,14 @@ class _HomeScreenState extends State<HomeScreen> {
                               topLeft: Radius.circular(10),
                               topRight: Radius.circular(10)),
                           child: Image.asset(
-                            "${F!.Images[index]}",
+                            "${homeProviderFalse!.Images[index]}",
                             fit: BoxFit.cover,
                           )),
                     ),
                     Container(
                       height: 100,
                       width: double.infinity,
+
                       child: Row(
                         children: [
                           SizedBox(
@@ -63,11 +67,12 @@ class _HomeScreenState extends State<HomeScreen> {
                             height: 45,
                             width: 45,
                             child: ClipRRect(
-                                borderRadius: BorderRadius.circular(30),
-                                child: Image.asset(
-                                  "${F!.chanelImage[index]}",
-                                  fit: BoxFit.fill,
-                                )),
+                              borderRadius: BorderRadius.circular(30),
+                              child: Image.asset(
+                                "${homeProviderFalse!.chanelImage[index]}",
+                                fit: BoxFit.fill,
+                              ),
+                            ),
                             decoration: BoxDecoration(
                                 color: Colors.yellow, shape: BoxShape.circle),
                           ),
@@ -78,7 +83,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text("${F!.channename[index]}"),
+                              Text("${homeProviderFalse!.channename[index]}"),
                             ],
                           ),
                         ],
@@ -90,9 +95,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   borderRadius: BorderRadius.circular(10),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.white,
-                      blurRadius: 5,
-                      spreadRadius: -5,
+                      color: Colors.white54,
+
                     ),
                   ],
                 ),
@@ -107,6 +111,6 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void deactivate() {
     super.deactivate();
-    F!.pausesong();
+    homeProviderFalse!.pausesong();
   }
 }
