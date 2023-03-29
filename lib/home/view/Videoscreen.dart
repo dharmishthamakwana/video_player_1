@@ -14,8 +14,6 @@ class _HomeScreenState extends State<HomeScreen> {
   HomeProvider? homeProviderTrue;
   HomeProvider? homeProviderFalse;
 
-
-
   @override
   Widget build(BuildContext context) {
     homeProviderTrue = Provider.of(context, listen: true);
@@ -45,6 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     Container(
                       height: 200,
                       width: double.infinity,
+                      decoration: BoxDecoration(color: Colors.grey.shade600),
                       child: ClipRRect(
                           borderRadius: BorderRadius.only(
                               topLeft: Radius.circular(10),
@@ -57,7 +56,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     Container(
                       height: 100,
                       width: double.infinity,
-
+                      decoration: BoxDecoration(color: Colors.black),
                       child: Row(
                         children: [
                           SizedBox(
@@ -68,22 +67,25 @@ class _HomeScreenState extends State<HomeScreen> {
                             width: 45,
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(30),
+
                               child: Image.asset(
                                 "${homeProviderFalse!.chanelImage[index]}",
                                 fit: BoxFit.fill,
                               ),
                             ),
                             decoration: BoxDecoration(
+                              border: Border.all(width: 2,color: Colors.black,),
                                 color: Colors.yellow, shape: BoxShape.circle),
                           ),
                           SizedBox(
                             width: 10,
                           ),
                           Column(
+
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text("${homeProviderFalse!.channename[index]}"),
+                              Text("${homeProviderFalse!.channename[index]}",style: TextStyle(color: Colors.white)),
                             ],
                           ),
                         ],
@@ -96,7 +98,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   boxShadow: [
                     BoxShadow(
                       color: Colors.white54,
-
                     ),
                   ],
                 ),
