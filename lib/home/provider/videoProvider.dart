@@ -27,13 +27,7 @@ class HomeProvider extends ChangeNotifier {
     "Nexus Birds",
   ];
 
-  // List videodetail = [
-  //   "Company",
-  //   "Jhoome Jo Pathaan",
-  //   "Munny Badnam",
-  //   "O Bedardeya",
-  //   "Oo Oo Antava",
-  // ];
+
   List videopath = [
     "assets/video/lo.mp4",
     "assets/video/2.mp4",

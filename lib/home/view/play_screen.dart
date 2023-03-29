@@ -12,7 +12,6 @@ class PlayScreen extends StatefulWidget {
 
 class _PlayScreenState extends State<PlayScreen> {
   @override
-  @override
   HomeProvider? T, F;
 
   Widget build(BuildContext context) {
@@ -23,9 +22,10 @@ class _PlayScreenState extends State<PlayScreen> {
       child: Scaffold(
         backgroundColor: Colors.black,
         body: Container(
-            child: Chewie(
-          controller: T!.chewi!,
-        )),
+          child: Chewie(
+            controller: T!.chewi!,
+          ),
+        ),
       ),
     );
   }
